@@ -1,0 +1,32 @@
+{
+    "name": "spryker-community/search-toolkit",
+    "type": "metapackage",
+    "description": "Bundle package for the Spryker search toolkit: require this to pull in search-debug, search-ranking, and search-ranking-optimizer together at compatible versions.",
+    "license": "MIT",
+    "keywords": [
+        "spryker",
+        "elasticsearch",
+        "opensearch",
+        "search",
+        "relevance",
+        "ranking",
+        "toolkit"
+    ],
+    "require": {
+        "spryker-community/search-debug": "^1.0.2",
+        "spryker-community/search-ranking": "^1.2.0",
+        "spryker-community/search-ranking-optimizer": "^0.9.1"
+    },
+    "minimum-stability": "stable",
+    "homepage": "https://github.com/andrebarthelmeshellmuth/spryker-search-toolkit",
+    "authors": [
+        {
+            "name": "Andre Barthelmes",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/andrebarthelmeshellmuth/spryker-search-toolkit/issues",
+        "source": "https://github.com/andrebarthelmeshellmuth/spryker-search-toolkit"
+    }
+}
