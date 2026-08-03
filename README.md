@@ -36,18 +36,25 @@ Pre-release. All three member packages, and this bundle, currently live under th
 unrelated GitHub organization; resolving this is tracked separately). Until that's resolved,
 installation requires the manual VCS repository step below.
 
+`search-ranking-optimizer` also transitively requires
+[`andrebarthelmeshellmuth/blackbox-optimizer`](https://github.com/andrebarthelmeshellmuth/blackbox-optimizer),
+which is likewise not yet on Packagist — see the note under [Installation](#installation).
+
 ## Installation
 
-Once every member package is published to Packagist, installing the whole toolkit will be:
+Once every member package (and blackbox-optimizer) is published to Packagist, installing the whole
+toolkit will be:
 
 ```
 composer require spryker-community/search-toolkit
 ```
 
-**Today**, since none of the member packages are on Packagist yet, add a VCS repository entry per
-package to your own project's `composer.json` (this bundle's own `repositories` section, if it had
-one, would not be inherited by your project — Composer only reads the root project's
-`repositories`):
+**Today**, add a VCS repository entry per package to your own project's `composer.json`. This is
+required for all four packages below **and** for `blackbox-optimizer`, even though
+`search-ranking-optimizer`'s own `composer.json` already declares a repository for it — Composer
+only reads `repositories` from the *root* project, never from a dependency's own `composer.json`,
+so every non-Packagist package anywhere in the graph has to be re-declared by whoever sits at the
+root. (This mirrors what this project's own demoshop does — see its `composer.json`.)
 
 ```json
 {
@@ -55,7 +62,8 @@ one, would not be inherited by your project — Composer only reads the root pro
         { "type": "vcs", "url": "https://github.com/andrebarthelmeshellmuth/spryker-search-debugger" },
         { "type": "vcs", "url": "https://github.com/andrebarthelmeshellmuth/spryker-search-ranking" },
         { "type": "vcs", "url": "https://github.com/andrebarthelmeshellmuth/spryker-search-ranking-optimizer" },
-        { "type": "vcs", "url": "https://github.com/andrebarthelmeshellmuth/spryker-search-toolkit" }
+        { "type": "vcs", "url": "https://github.com/andrebarthelmeshellmuth/spryker-search-toolkit" },
+        { "type": "vcs", "url": "https://github.com/andrebarthelmeshellmuth/blackbox-optimizer" }
     ],
     "require": {
         "spryker-community/search-toolkit": "@dev"
