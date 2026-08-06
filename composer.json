@@ -13,7 +13,7 @@
         "toolkit"
     ],
     "require": {
-        "spryker-community/search-debug": "^1.0.2",
+        "spryker-community/search-debug": "^1.1.0",
         "spryker-community/search-ranking": "^1.2.0",
         "spryker-community/search-ranking-optimizer": "^0.9.1"
     },
