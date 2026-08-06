@@ -38,11 +38,6 @@ Pre-release. All four member packages, and this bundle, currently live under the
 unrelated GitHub organization; resolving this is tracked separately). Until that's resolved,
 installation requires the manual VCS repository step below.
 
-**`search-feedback` is required via its `release/v1.0.0` branch (`dev-release/v1.0.0 as 1.0.0.0`),
-not a tagged version** — unlike the other three members, it hasn't cut a release yet. That branch is
-the one being manually tested ahead of its actual v1.0.0 tag; this floor will move to a real `^1.0.0`
-once that lands.
-
 `search-ranking-optimizer` also transitively requires
 [`andrebarthelmeshellmuth/blackbox-optimizer`](https://github.com/andrebarthelmeshellmuth/blackbox-optimizer),
 which is likewise not yet on Packagist — see the note under [Installation](#installation).
@@ -74,7 +69,7 @@ root. (This mirrors what this project's own demoshop does — see its `composer.
         { "type": "vcs", "url": "https://github.com/andrebarthelmeshellmuth/blackbox-optimizer" }
     ],
     "require": {
-        "spryker-community/search-toolkit": "^0.9.2"
+        "spryker-community/search-toolkit": "^0.9.3"
     }
 }
 ```
