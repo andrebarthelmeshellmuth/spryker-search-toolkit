@@ -33,10 +33,20 @@ package under this same toolkit, not bolted onto the relevance packages above.
 
 ## Status
 
-Pre-release. All four member packages, and this bundle, currently live under the
-`spryker-community` vendor namespace, which is not yet on Packagist (the name is held by an
-unrelated GitHub organization; resolving this is tracked separately). Until that's resolved,
-installation requires the manual VCS repository step below.
+Stable. Every member package has reached a stable release, and this bundle pins them as a verified
+set:
+
+| Package | Pinned at |
+|---|---|
+| search-debug | `^1.2.1` |
+| search-ranking | `^2.2.0` |
+| search-ranking-optimizer | `^1.0.0` |
+| search-feedback | `^1.3.0` |
+
+One caveat is unchanged, and it is about distribution, not maturity: all four member packages, and
+this bundle, live under the `spryker-community` vendor namespace, which is not yet on Packagist (the
+name is held by an unrelated GitHub organization; resolving this is tracked separately). Until that's
+resolved, installation requires the manual VCS repository step below.
 
 `search-ranking-optimizer` also transitively requires
 [`andrebarthelmeshellmuth/blackbox-optimizer`](https://github.com/andrebarthelmeshellmuth/blackbox-optimizer),
@@ -83,6 +93,12 @@ This package has no code, so its version tracks *compatible combinations*, not b
 bundle has been verified against — and, as a patch bump, whenever a new member package joins the
 bundle at all (adding `search-feedback` was one such patch bump, even though nothing existing
 changed).
+
+`1.0.0` marks the point where every member package is itself at a stable release, rather than any
+change in what this bundle does. Note that two of the floors it raised were not merely stale but
+wrong: the previous `^1.3.0` for search-ranking excluded its entire 2.x line, and `^0.9.1` for
+search-ranking-optimizer excluded its 1.0.0 — so pre-1.0.0 tags of this bundle resolve to a set that
+no longer reflects the packages' current releases. Use `^1.0.0`.
 
 ## License
 
