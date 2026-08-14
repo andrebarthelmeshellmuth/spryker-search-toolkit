@@ -39,9 +39,9 @@ set:
 | Package | Pinned at |
 |---|---|
 | search-debug | `^1.2.1` |
-| search-ranking | `^2.2.0` |
+| search-ranking | `^2.3.0` |
 | search-ranking-optimizer | `^1.0.0` |
-| search-feedback | `^1.3.0` |
+| search-feedback | `^1.4.0` |
 
 One caveat is unchanged, and it is about distribution, not maturity: all four member packages, and
 this bundle, live under the `spryker-community` vendor namespace, which is not yet on Packagist (the
@@ -79,7 +79,7 @@ root. (This mirrors what this project's own demoshop does — see its `composer.
         { "type": "vcs", "url": "https://github.com/andrebarthelmeshellmuth/blackbox-optimizer" }
     ],
     "require": {
-        "spryker-community/search-toolkit": "^0.9.3"
+        "spryker-community/search-toolkit": "^1.1.0"
     }
 }
 ```
@@ -98,7 +98,7 @@ changed).
 change in what this bundle does. Note that two of the floors it raised were not merely stale but
 wrong: the previous `^1.3.0` for search-ranking excluded its entire 2.x line, and `^0.9.1` for
 search-ranking-optimizer excluded its 1.0.0 — so pre-1.0.0 tags of this bundle resolve to a set that
-no longer reflects the packages' current releases. Use `^1.0.0`.
+no longer reflects the packages' current releases. Use `^1.1.0`.
 
 ## License
 
