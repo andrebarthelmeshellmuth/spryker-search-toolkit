@@ -14,9 +14,9 @@
     ],
     "require": {
         "spryker-community/search-debug": "^1.2.1",
-        "spryker-community/search-ranking": "^2.2.0",
+        "spryker-community/search-ranking": "^2.3.0",
         "spryker-community/search-ranking-optimizer": "^1.0.0",
-        "spryker-community/search-feedback": "^1.3.0"
+        "spryker-community/search-feedback": "^1.4.0"
     },
     "minimum-stability": "stable",
     "homepage": "https://github.com/andrebarthelmeshellmuth/spryker-search-toolkit",
