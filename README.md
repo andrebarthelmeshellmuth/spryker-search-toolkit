@@ -1,7 +1,7 @@
 # Spryker Search Toolkit
 
 A single `composer require` for the whole Spryker search toolkit. This package carries no code of
-its own — it exists purely to pull in [search-debug](https://github.com/andrebarthelmeshellmuth/spryker-search-debugger),
+its own — it exists purely to pull in [search-debug](https://github.com/andrebarthelmeshellmuth/spryker-search-debug),
 [search-ranking](https://github.com/andrebarthelmeshellmuth/spryker-search-ranking),
 [search-ranking-optimizer](https://github.com/andrebarthelmeshellmuth/spryker-search-ranking-optimizer), and
 [search-feedback](https://github.com/andrebarthelmeshellmuth/spryker-search-feedback)
@@ -33,7 +33,7 @@ package under this same toolkit, not bolted onto the relevance packages above.
 
 | Package | Role |
 |---|---|
-| [search-debug](https://github.com/andrebarthelmeshellmuth/spryker-search-debugger) | Per-product Elasticsearch/OpenSearch score and token overlay — explains why a result ranked where it did. |
+| [search-debug](https://github.com/andrebarthelmeshellmuth/spryker-search-debug) | Per-product Elasticsearch/OpenSearch score and token overlay — explains why a result ranked where it did. |
 | [search-ranking](https://github.com/andrebarthelmeshellmuth/spryker-search-ranking) | The ranking mechanism: business-signal metrics, normalization, and `function_score` ranking. |
 | [search-ranking-optimizer](https://github.com/andrebarthelmeshellmuth/spryker-search-ranking-optimizer) | The tuning layer on top: calibration, relevance judgments, rank evaluation, and weight optimization. |
 | [search-feedback](https://github.com/andrebarthelmeshellmuth/spryker-search-feedback) | SRP feedback ticketing: lets an authorized storefront admin file a ticket about a set of search results. |
@@ -87,7 +87,7 @@ root. (This mirrors what this project's own demoshop does — see its `composer.
 ```json
 {
     "repositories": [
-        { "type": "vcs", "url": "https://github.com/andrebarthelmeshellmuth/spryker-search-debugger" },
+        { "type": "vcs", "url": "https://github.com/andrebarthelmeshellmuth/spryker-search-debug" },
         { "type": "vcs", "url": "https://github.com/andrebarthelmeshellmuth/spryker-search-ranking" },
         { "type": "vcs", "url": "https://github.com/andrebarthelmeshellmuth/spryker-search-ranking-optimizer" },
         { "type": "vcs", "url": "https://github.com/andrebarthelmeshellmuth/spryker-search-feedback" },

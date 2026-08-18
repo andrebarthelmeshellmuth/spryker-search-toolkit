@@ -9,7 +9,7 @@ the latest release before reporting.
 
 This repository is a metapackage with no source code of its own — most vulnerabilities will
 actually live in
-[search-debug](https://github.com/andrebarthelmeshellmuth/spryker-search-debugger),
+[search-debug](https://github.com/andrebarthelmeshellmuth/spryker-search-debug),
 [search-ranking](https://github.com/andrebarthelmeshellmuth/spryker-search-ranking), or
 [search-ranking-optimizer](https://github.com/andrebarthelmeshellmuth/spryker-search-ranking-optimizer).
 If you know which one, please report it there directly.
