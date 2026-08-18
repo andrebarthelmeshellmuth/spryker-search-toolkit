@@ -5,7 +5,7 @@ its own — it exists purely to pull in [search-debug](https://github.com/andreb
 [search-ranking](https://github.com/andrebarthelmeshellmuth/spryker-search-ranking),
 [search-ranking-optimizer](https://github.com/andrebarthelmeshellmuth/spryker-search-ranking-optimizer), and
 [search-feedback](https://github.com/andrebarthelmeshellmuth/spryker-search-feedback)
-together at versions that are known to work with each other.
+at version floors that are known to work with each other.
 
 Each member package stays independently installable and focused on one concern (explainability,
 ranking mechanism, tuning). Future search tooling that isn't about relevance scoring — for example
@@ -13,6 +13,13 @@ a no-downtime settings/mapping change via alias swap — is expected to land as 
 package under this same toolkit, not bolted onto the relevance packages above.
 
 *Part of the [Search Relevance](https://search-relevance.dev/) project — explore the interactive ranking-formula walkthrough there.*
+
+> **Not an official Spryker project.** `spryker-community/*` is an independent, community-built
+> package namespace with no affiliation to, sponsorship by, or endorsement from Spryker Systems GmbH.
+> The name describes what these packages are (community contributions for Spryker Commerce OS), not who
+> maintains them. The matching Packagist namespace is held by an unrelated GitHub organization, which is
+> why installation goes through a VCS repository entry rather than a plain `composer require` — see
+> [Installation](#installation).
 
 ## Contents
 
@@ -33,15 +40,24 @@ package under this same toolkit, not bolted onto the relevance packages above.
 
 ## Status
 
-Stable. Every member package has reached a stable release, and this bundle pins them as a verified
-set:
+Stable. Every member package has reached a stable release. This bundle declares the oldest version of
+each that it has been verified against:
 
-| Package | Pinned at |
+| Package | Minimum verified |
 |---|---|
 | search-debug | `^1.2.1` |
 | search-ranking | `^2.3.0` |
 | search-ranking-optimizer | `^1.0.0` |
 | search-feedback | `^1.4.0` |
+
+Read these as **floors, not pins**. They are caret constraints, so Composer resolves each member to the
+newest release sharing that major — installing today gives you a newer set than the versions named
+above, and that resolved combination is whatever the member packages' own semver guarantees make it,
+not a combination this bundle has separately tested. That is the intended trade-off: pinning exact
+versions here would block members from shipping their own patch releases to you. What this bundle
+guarantees is the *floor* — that nothing older than the table above is ever selected, and that the
+majors listed are mutually compatible. If you need a byte-exact reproducible set, commit your
+`composer.lock`; that is the tool for it, and it is the reason this bundle does not try to be one.
 
 One caveat is unchanged, and it is about distribution, not maturity: all four member packages, and
 this bundle, live under the `spryker-community` vendor namespace, which is not yet on Packagist (the
