@@ -44,9 +44,11 @@ set:
 | search-feedback | `^1.4.0` |
 
 One caveat is unchanged, and it is about distribution, not maturity: all four member packages, and
-this bundle, live under the `spryker-community` vendor namespace, which is not yet on Packagist (the
-name is held by an unrelated GitHub organization; resolving this is tracked separately). Until that's
-resolved, installation requires the manual VCS repository step below.
+this bundle, live under the `spryker-community` vendor namespace, which is not yet on Packagist. That
+namespace and its GitHub org (`github.com/spryker-community`) are maintained by Spryker's own community
+program — we're in contact with them about bringing these packages in properly (their `dummy-module`
+template is the onboarding path). Until that lands, installation requires the manual VCS repository step
+below.
 
 `search-ranking-optimizer` also transitively requires
 [`andrebarthelmeshellmuth/blackbox-optimizer`](https://github.com/andrebarthelmeshellmuth/blackbox-optimizer),
