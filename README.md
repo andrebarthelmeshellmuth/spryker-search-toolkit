@@ -1,5 +1,8 @@
 # Spryker Search Toolkit
 
+[![CI](https://github.com/andrebarthelmeshellmuth/spryker-search-toolkit/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/andrebarthelmeshellmuth/spryker-search-toolkit/actions/workflows/ci.yml)
+[![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
+
 A single `composer require` for the whole Spryker search toolkit. This package carries no code of
 its own — it exists purely to pull in [search-debug](https://github.com/andrebarthelmeshellmuth/spryker-search-debug),
 [search-ranking](https://github.com/andrebarthelmeshellmuth/spryker-search-ranking),
