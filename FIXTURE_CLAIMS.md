@@ -56,6 +56,26 @@ Per-package rows already registered on `test-company_Admin`:
 - `SeeSearchRankingRandomImpactPermissionPlugin` (search-ranking)
 - `RateSearchRelevancePermissionPlugin` (search-ranking-optimizer)
 
+### Shared: the "Feldwerk" demo catalog
+
+The demoshop's own supplier catalog (real brand photography and copy) isn't licensed for public
+redistribution, so README/website screenshots use an entirely fictional 12-product catalog instead —
+10 stacking/office/conference chairs, 1 folding hand trolley, 1 desktop paper shredder, all branded
+"Feldwerk", with flat-SVG data-URI images (no external image hosting) and their own DE gross pricing.
+Claims new abstract/concrete SKUs only (`DEMO-CHR-001`..`010`, `DEMO-WHS-001`, `DEMO-OFF-001`) — no
+shared-file attribute-slot edits, so it's additive-safe alongside every claim above. Generator script
+and source CSVs live in `spryker-community/search-feedback`'s `fixtures/demo-catalog/` (chosen as the
+one home rather than duplicating it per package); every other package's own `fixtures/apply.php` merges
+the same CSVs in via the identical "add only if the SKU is missing" idempotency as the shared customer
+below — safe to run alongside any subset of the others, in any order.
+
+Each sibling's copy is a bundled snapshot, not a live reference — regenerating the catalog in
+search-feedback does **not** propagate anywhere else on its own. `search-debug` and `search-ranking` each
+run a `fixtures-sync` CI job that diffs their local `fixtures/demo-catalog/*.csv` against
+search-feedback's current `main` on every push/PR, failing loudly if the two go out of sync. When you
+change the generator, regenerate, then copy the new CSVs into every sibling that carries them (including
+`search-ranking-optimizer`, once it adopts the catalog) in the same change.
+
 ### spryker-community/search-ranking
 
 - `search_ranking_metric.csv` / `search_ranking_product_metric.csv` — standalone new files, own
@@ -74,4 +94,4 @@ Per-package rows already registered on `test-company_Admin`:
 
 ### spryker-community/search-debug, spryker-community/search-feedback
 
-- No fixture data claims beyond the shared customer above.
+- No fixture data claims beyond the shared customer and the shared Feldwerk demo catalog above.
