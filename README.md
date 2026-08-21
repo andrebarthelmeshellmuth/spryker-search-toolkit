@@ -1,5 +1,14 @@
 # Spryker Search Toolkit
 
+[![CI](https://github.com/andrebarthelmeshellmuth/spryker-search-toolkit/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/andrebarthelmeshellmuth/spryker-search-toolkit/actions/workflows/ci.yml)
+[![Bundles](https://img.shields.io/badge/bundles-6%20packages-2a6b2a)](#whats-included)
+[![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
+
+This is a `type: metapackage` with no PHP source of its own, so it skips the PHP-version and
+PHPStan badges every bundled package carries — there's no code for either to describe here. The
+CI badge instead reflects the one check that does apply: `composer validate --strict` on this
+package's own `composer.json`.
+
 A single `composer require` for the whole Spryker search toolkit. This package carries no code of
 its own — it exists purely to pull in [search-debug](https://github.com/andrebarthelmeshellmuth/spryker-search-debugger),
 [search-ranking](https://github.com/andrebarthelmeshellmuth/spryker-search-ranking),
@@ -19,11 +28,74 @@ sibling packages under this same toolkit rather than bolted onto the relevance p
 
 ## Contents
 
+- [Quick summary](#quick-summary)
 - [What's included](#whats-included)
 - [Status](#status)
 - [Installation](#installation)
 - [Versioning](#versioning)
 - [License](#license)
+
+## Quick summary
+
+One screenshot per bundled package, and the top thing (or two, or three) it actually does for you.
+
+### [search-debug](https://github.com/andrebarthelmeshellmuth/spryker-search-debugger)
+
+![The SRP score overlay: matched tokens with a magnifying-glass link, the raw text-match score, per-field score contributions (type, store, locale, is-active), and the final score used for ranking](docs/screenshots/search-debug-srp-overlay.png)
+
+- Explains exactly how a product earned its position on the results page: which database field
+  matched, what the analyzer chain turned that field's value into, and how each piece contributed
+  to the final score.
+- The overlay widget itself is open for extension — other packages (search-ranking included)
+  register their own contribution rows into it rather than needing a competing UI.
+
+### [search-ranking](https://github.com/andrebarthelmeshellmuth/spryker-search-ranking)
+
+![The metrics list: ID, name, weight, formula, active/inactive status, and edit/delete actions for every configured business signal](docs/screenshots/search-ranking-metrics-list.png)
+
+- Lets you define weighted business metrics per store, so ranking stops being pure text
+  relevance — margin, stock, conversion rate, or whatever signal matters, as long as each product
+  carries that data.
+- Blends those metrics into Elasticsearch/OpenSearch's `function_score` query alongside text
+  relevance, with a relevance-weight knob to shift the balance between the two.
+
+### [search-ranking-optimizer](https://github.com/andrebarthelmeshellmuth/spryker-search-ranking-optimizer)
+
+![The Automated Weight Optimization page: the latest run's baseline vs. winning nDCG@10 score, the winning relevanceWeight and per-metric weights, a restart-on-plateau run's own restart history (population/generations/why it stopped/best score per restart), when it was applied, and a form to queue a new run against a chosen store/locale/algorithm/termination mode](docs/screenshots/search-ranking-optimizer-automated-weight-optimization.png)
+
+- Lets admins rate how good a query's results actually are, building up a relevance-judgment set
+  from real feedback instead of guesswork.
+- Feeds those ratings into [blackbox-optimizer](https://github.com/andrebarthelmeshellmuth/blackbox-optimizer)
+  (CMA-ES or Differential Evolution) to automatically tune search-ranking's formula weights,
+  scored against nDCG@10.
+
+### [search-feedback](https://github.com/andrebarthelmeshellmuth/spryker-search-feedback)
+
+![The storefront search results page with a "Not happy with these results?" box below the product grid: a Topic dropdown (Relevance/Missing results/Wrong order/Filters-facets/Other), a free-text body field, and a Send Feedback button](docs/screenshots/search-feedback-yves-ticket-form.png)
+
+- Lets a storefront user file a ticket about a specific search-results page straight from the
+  page they're looking at, without needing to describe what they searched for.
+- The Zed admin who picks it up can replay the *exact* result set the ticket-filer saw — not "run
+  this search now," but "run it as it looked back then" — and, if search-debug is installed, dig
+  into exactly how each of those historical scores was calculated.
+
+### [search-variant-facets](https://github.com/andrebarthelmeshellmuth/spryker-search-variant-facets)
+
+![Illustrative mockup: selecting Color=Red and Size=40 should only return products where one single variant is both red and size 40. Shoe #1 has a matching Red/Size-40 variant; Shoe #2 only has Green/Size-40 and Red/Size-42 separately, so no single variant satisfies both filters and it's correctly excluded](docs/screenshots/search-variant-facets-yves-mockup.webp)
+
+- Fixes a real gap in Spryker core's facet indexing: core can return an abstract product even
+  when no single one of its concretes/variants actually matches every selected facet value at
+  once (an OR-across-concretes leak). This package makes cross-facet selections match only
+  concretes that genuinely carry the full combination.
+
+### [search-index-alias](https://github.com/andrebarthelmeshellmuth/spryker-search-index-alias)
+
+![A ready rollout flagged "for next deploy": the cross-scope Pending deploy flips panel above the filter lists it, the active-rollout line carries a "flagged for next deploy" badge, and the action bar shows Flip (immediate) alongside Unflag (cancel the flag) instead of a plain Flip-only bar](docs/screenshots/search-index-alias-deploy-flip.png)
+
+- Introduces no-downtime index switches: rebuild a search index in the background, verify it,
+  then flip an alias to it instead of updating an index in place.
+- A flip can be flagged to happen automatically as part of the next deployment, instead of
+  requiring someone to trigger it by hand.
 
 ## What's included
 
