@@ -10,13 +10,13 @@ CI badge instead reflects the one check that does apply: `composer validate --st
 package's own `composer.json`.
 
 A single `composer require` for the whole Spryker search toolkit. This package carries no code of
-its own — it exists purely to pull in [search-debug](https://github.com/andrebarthelmeshellmuth/spryker-search-debugger),
+its own — it exists purely to pull in [search-debug](https://github.com/andrebarthelmeshellmuth/spryker-search-debug),
 [search-ranking](https://github.com/andrebarthelmeshellmuth/spryker-search-ranking),
 [search-ranking-optimizer](https://github.com/andrebarthelmeshellmuth/spryker-search-ranking-optimizer),
 [search-feedback](https://github.com/andrebarthelmeshellmuth/spryker-search-feedback),
 [search-variant-facets](https://github.com/andrebarthelmeshellmuth/spryker-search-variant-facets), and
 [search-index-alias](https://github.com/andrebarthelmeshellmuth/spryker-search-index-alias)
-together at versions that are known to work with each other.
+at version floors that are known to work with each other.
 
 Each member package stays independently installable and focused on one concern (explainability,
 ranking mechanism, tuning, cross-facet indexing, no-downtime index management). search-index-alias
@@ -25,6 +25,13 @@ settings/mapping change via alias swap, and correct cross-facet indexing, respec
 sibling packages under this same toolkit rather than bolted onto the relevance packages above.
 
 *Part of the [Search Relevance](https://search-relevance.dev/) project — explore the interactive ranking-formula walkthrough there.*
+
+> **Not an official Spryker project.** `spryker-community/*` is an independent, community-built
+> package namespace with no affiliation to, sponsorship by, or endorsement from Spryker Systems GmbH.
+> The name describes what these packages are (community contributions for Spryker Commerce OS), not who
+> maintains them. The matching Packagist namespace is held by an unrelated GitHub organization, which is
+> why installation goes through a VCS repository entry rather than a plain `composer require` — see
+> [Installation](#installation).
 
 ## Contents
 
@@ -101,7 +108,7 @@ One screenshot per bundled package, and the top thing (or two, or three) it actu
 
 | Package | Role |
 |---|---|
-| [search-debug](https://github.com/andrebarthelmeshellmuth/spryker-search-debugger) | Per-product Elasticsearch/OpenSearch score and token overlay — explains why a result ranked where it did. |
+| [search-debug](https://github.com/andrebarthelmeshellmuth/spryker-search-debug) | Per-product Elasticsearch/OpenSearch score and token overlay — explains why a result ranked where it did. |
 | [search-ranking](https://github.com/andrebarthelmeshellmuth/spryker-search-ranking) | The ranking mechanism: business-signal metrics, normalization, and `function_score` ranking. |
 | [search-ranking-optimizer](https://github.com/andrebarthelmeshellmuth/spryker-search-ranking-optimizer) | The tuning layer on top: calibration, relevance judgments, rank evaluation, and weight optimization. |
 | [search-feedback](https://github.com/andrebarthelmeshellmuth/spryker-search-feedback) | SRP feedback ticketing: lets an authorized storefront admin file a ticket about a set of search results. |
@@ -110,10 +117,10 @@ One screenshot per bundled package, and the top thing (or two, or three) it actu
 
 ## Status
 
-Stable. Every member package has reached a stable release, and this bundle pins them as a verified
-set:
+Stable. Every member package has reached a stable release. This bundle declares the oldest version of
+each that it has been verified against:
 
-| Package | Pinned at |
+| Package | Minimum verified |
 |---|---|
 | search-debug | `^1.3.2` |
 | search-ranking | `^2.3.3` |
@@ -121,6 +128,15 @@ set:
 | search-feedback | `^1.4.2` |
 | search-variant-facets | `^1.0.0` |
 | search-index-alias | `^1.0.0` |
+
+Read these as **floors, not pins**. They are caret constraints, so Composer resolves each member to the
+newest release sharing that major — installing today gives you a newer set than the versions named
+above, and that resolved combination is whatever the member packages' own semver guarantees make it,
+not a combination this bundle has separately tested. That is the intended trade-off: pinning exact
+versions here would block members from shipping their own patch releases to you. What this bundle
+guarantees is the *floor* — that nothing older than the table above is ever selected, and that the
+majors listed are mutually compatible. If you need a byte-exact reproducible set, commit your
+`composer.lock`; that is the tool for it, and it is the reason this bundle does not try to be one.
 
 One caveat is unchanged, and it is about distribution, not maturity: all six member packages, and
 this bundle, live under the `spryker-community` vendor namespace, which is not yet on Packagist (the
@@ -150,7 +166,7 @@ root. (This mirrors what this project's own demoshop does — see its `composer.
 ```json
 {
     "repositories": [
-        { "type": "vcs", "url": "https://github.com/andrebarthelmeshellmuth/spryker-search-debugger" },
+        { "type": "vcs", "url": "https://github.com/andrebarthelmeshellmuth/spryker-search-debug" },
         { "type": "vcs", "url": "https://github.com/andrebarthelmeshellmuth/spryker-search-ranking" },
         { "type": "vcs", "url": "https://github.com/andrebarthelmeshellmuth/spryker-search-ranking-optimizer" },
         { "type": "vcs", "url": "https://github.com/andrebarthelmeshellmuth/spryker-search-feedback" },

@@ -3,7 +3,7 @@
 This repository is a composer metapackage — it has no source code of its own, just a
 `composer.json` requiring compatible versions of:
 
-- [search-debug](https://github.com/andrebarthelmeshellmuth/spryker-search-debugger)
+- [search-debug](https://github.com/andrebarthelmeshellmuth/spryker-search-debug)
 - [search-ranking](https://github.com/andrebarthelmeshellmuth/spryker-search-ranking)
 - [search-ranking-optimizer](https://github.com/andrebarthelmeshellmuth/spryker-search-ranking-optimizer)
 
