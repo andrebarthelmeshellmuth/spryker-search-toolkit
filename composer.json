@@ -1,7 +1,7 @@
 {
     "name": "spryker-community/search-toolkit",
     "type": "metapackage",
-    "description": "Bundle package for the Spryker search toolkit: require this to pull in search-debug, search-ranking, search-ranking-optimizer, and search-feedback together at compatible versions.",
+    "description": "Bundle package for the Spryker search toolkit: require this to pull in search-debug, search-ranking, search-ranking-optimizer, search-feedback, search-variant-facets, and search-index-alias together at compatible versions.",
     "license": "MIT",
     "keywords": [
         "spryker",
@@ -13,10 +13,12 @@
         "toolkit"
     ],
     "require": {
-        "spryker-community/search-debug": "^1.2.1",
-        "spryker-community/search-ranking": "^2.3.0",
-        "spryker-community/search-ranking-optimizer": "^1.0.0",
-        "spryker-community/search-feedback": "^1.4.0"
+        "spryker-community/search-debug": "^1.3.2",
+        "spryker-community/search-ranking": "^2.3.3",
+        "spryker-community/search-ranking-optimizer": "^2.0.0",
+        "spryker-community/search-feedback": "^1.4.2",
+        "spryker-community/search-variant-facets": "^1.0.0",
+        "spryker-community/search-index-alias": "^1.0.0"
     },
     "minimum-stability": "stable",
     "homepage": "https://github.com/andrebarthelmeshellmuth/spryker-search-toolkit",
