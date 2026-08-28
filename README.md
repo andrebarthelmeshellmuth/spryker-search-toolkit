@@ -163,6 +163,18 @@ below.
 [`andrebarthelmeshellmuth/blackbox-optimizer`](https://github.com/andrebarthelmeshellmuth/blackbox-optimizer),
 which is likewise not yet on Packagist — see the note under [Installation](#installation).
 
+### Search engine compatibility
+
+Every member package is verified against **OpenSearch 1.3.4, 2.11, 3.5.0 and Elasticsearch 8.11** — a
+range spanning three Lucene generations (8.10 → 10.3) and the Apache-2.0 fork point. **The OpenSearch 3.5
+upgrade required no code change in any member package**; it was run end-to-end on a demoshop upgraded from
+1.3.4 (full re-export/reindex, every package's `check-installation` re-run on 3.5). The migration friction
+is entirely core Spryker (the search-schema packages, ticket SC-25160) and project/deployment level — the
+k-NN engine name, the static `index.knn` setting, the HTTP request-size limit for embedding-carrying
+documents, and a neural-search mapping-transformer trap. All of it is written up in
+[Migrating to OpenSearch 3.x](https://github.com/andrebarthelmeshellmuth/spryker-search-ranking/blob/main/docs/opensearch-3.x-migration.md)
+(in `search-ranking`).
+
 ## Installation
 
 Once every member package (and blackbox-optimizer) is published to Packagist, installing the whole
