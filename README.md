@@ -171,9 +171,9 @@ upgrade required no code change in any member package**; it was run end-to-end o
 1.3.4 (full re-export/reindex, every package's `check-installation` re-run on 3.5). The migration friction
 is entirely core Spryker (the search-schema packages, ticket SC-25160) and project/deployment level — the
 k-NN engine name, the static `index.knn` setting, the HTTP request-size limit for embedding-carrying
-documents, and a neural-search mapping-transformer trap. All of it is written up in
-[Migrating to OpenSearch 3.x](https://github.com/andrebarthelmeshellmuth/spryker-search-ranking/blob/main/docs/opensearch-3.x-migration.md)
-(in `search-ranking`).
+documents, and a neural-search mapping-transformer trap. [Migrating to OpenSearch
+3.x](docs/opensearch-3.x-migration.md) is the shared reference (capability delta + the upgrade-time trap)
+and links each member package's own tailored note.
 
 ## Installation
 
