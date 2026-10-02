@@ -10,10 +10,10 @@ CI badge instead reflects the one check that does apply: `composer validate --st
 package's own `composer.json`.
 
 A single `composer require` for the whole Spryker search toolkit. This package carries no code of
-its own — it exists purely to pull in [search-debug](https://github.com/andrebarthelmeshellmuth/spryker-search-debug),
+its own — it exists purely to pull in [search-debug](https://github.com/spryker-community/search-debug),
 [search-ranking](https://github.com/andrebarthelmeshellmuth/spryker-search-ranking),
 [search-ranking-optimizer](https://github.com/andrebarthelmeshellmuth/spryker-search-ranking-optimizer),
-[search-feedback](https://github.com/andrebarthelmeshellmuth/spryker-search-feedback),
+[search-feedback](https://github.com/spryker-community/search-feedback),
 [search-variant-facets](https://github.com/andrebarthelmeshellmuth/spryker-search-variant-facets),
 [search-index-alias](https://github.com/andrebarthelmeshellmuth/spryker-search-index-alias), and
 [search-analyzer-config](https://github.com/andrebarthelmeshellmuth/spryker-search-analyzer-config)
@@ -29,12 +29,10 @@ relevance packages above.
 
 *Part of the [Search Relevance](https://search-relevance.dev/) project — explore the interactive ranking-formula walkthrough there.*
 
-> **Not an official Spryker project.** `spryker-community/*` is an independent, community-built
-> package namespace with no affiliation to, sponsorship by, or endorsement from Spryker Systems GmbH.
-> The name describes what these packages are (community contributions for Spryker Commerce OS), not who
-> maintains them. The matching Packagist namespace is held by an unrelated GitHub organization, which is
-> why installation goes through a VCS repository entry rather than a plain `composer require` — see
-> [Installation](#installation).
+> **Community extensions.** search-debug and search-feedback are maintained by the community in
+> Spryker's [community GitHub org](https://github.com/spryker-community); this bundle and the other
+> members are still hosted on the maintainer's own GitHub account while they move over. None of them are
+> part of the commercial Spryker product or covered by Spryker's commercial support.
 
 ## Contents
 
@@ -49,7 +47,7 @@ relevance packages above.
 
 One screenshot per bundled package, and the top thing (or two, or three) it actually does for you.
 
-### [search-debug](https://github.com/andrebarthelmeshellmuth/spryker-search-debugger)
+### [search-debug](https://github.com/spryker-community/search-debug)
 
 ![The SRP score overlay: matched tokens with a magnifying-glass link, the raw text-match score, per-field score contributions (type, store, locale, is-active), and the final score used for ranking](docs/screenshots/search-debug-srp-overlay.png)
 
@@ -79,7 +77,7 @@ One screenshot per bundled package, and the top thing (or two, or three) it actu
   (CMA-ES or Differential Evolution) to automatically tune search-ranking's formula weights,
   scored against nDCG@10.
 
-### [search-feedback](https://github.com/andrebarthelmeshellmuth/spryker-search-feedback)
+### [search-feedback](https://github.com/spryker-community/search-feedback)
 
 ![The storefront search results page with a "Not happy with these results?" box below the product grid: a Topic dropdown (Relevance/Missing results/Wrong order/Filters-facets/Other), a free-text body field, and a Send Feedback button](docs/screenshots/search-feedback-yves-ticket-form.png)
 
@@ -120,10 +118,10 @@ One screenshot per bundled package, and the top thing (or two, or three) it actu
 
 | Package | Role |
 |---|---|
-| [search-debug](https://github.com/andrebarthelmeshellmuth/spryker-search-debug) | Per-product Elasticsearch/OpenSearch score and token overlay — explains why a result ranked where it did. |
+| [search-debug](https://github.com/spryker-community/search-debug) | Per-product Elasticsearch/OpenSearch score and token overlay — explains why a result ranked where it did. |
 | [search-ranking](https://github.com/andrebarthelmeshellmuth/spryker-search-ranking) | The ranking mechanism: business-signal metrics, normalization, and `function_score` ranking. |
 | [search-ranking-optimizer](https://github.com/andrebarthelmeshellmuth/spryker-search-ranking-optimizer) | The tuning layer on top: calibration, relevance judgments, rank evaluation, and weight optimization. |
-| [search-feedback](https://github.com/andrebarthelmeshellmuth/spryker-search-feedback) | SRP feedback ticketing: lets an authorized storefront admin file a ticket about a set of search results. |
+| [search-feedback](https://github.com/spryker-community/search-feedback) | SRP feedback ticketing: lets an authorized storefront admin file a ticket about a set of search results. |
 | [search-variant-facets](https://github.com/andrebarthelmeshellmuth/spryker-search-variant-facets) | Fixes Spryker core's OR-across-concretes facet indexing: cross-facet selections match only concretes that actually carry the combination. |
 | [search-index-alias](https://github.com/andrebarthelmeshellmuth/spryker-search-index-alias) | Zed blue/green search-index management via aliases: rebuild and flip an index with no storefront downtime. |
 | [search-analyzer-config](https://github.com/andrebarthelmeshellmuth/spryker-search-analyzer-config) | Zed-editable per-store-index analyzer configuration (decompound words, synonyms, stopwords, stemmer language), materialized via a search-index-alias rebuild. |
@@ -152,12 +150,10 @@ guarantees is the *floor* — that nothing older than the table above is ever se
 majors listed are mutually compatible. If you need a byte-exact reproducible set, commit your
 `composer.lock`; that is the tool for it, and it is the reason this bundle does not try to be one.
 
-One caveat is unchanged, and it is about distribution, not maturity: all six member packages, and
-this bundle, live under the `spryker-community` vendor namespace, which is not yet on Packagist. That
-namespace and its GitHub org (`github.com/spryker-community`) are maintained by Spryker's own community
-program — we're in contact with them about bringing these packages in properly (their `dummy-module`
-template is the onboarding path). Until that lands, installation requires the manual VCS repository step
-below.
+One caveat is unchanged, and it is about distribution, not maturity: the packages are moving into
+Spryker's community GitHub org (`github.com/spryker-community`) and onto Packagist one at a time.
+search-debug and search-feedback are already there and install from Packagist; the other five members and
+this bundle are not yet, so installation still needs the manual VCS repository step below for them.
 
 `search-ranking-optimizer` also transitively requires
 [`andrebarthelmeshellmuth/blackbox-optimizer`](https://github.com/andrebarthelmeshellmuth/blackbox-optimizer),
@@ -172,20 +168,19 @@ toolkit will be:
 composer require spryker-community/search-toolkit
 ```
 
-**Today**, add a VCS repository entry per package to your own project's `composer.json`. This is
-required for all eight packages below **and** for `blackbox-optimizer`, even though
+**Today**, add a VCS repository entry to your own project's `composer.json` for every package that is
+not yet on Packagist: the five members and this bundle below, **and** `blackbox-optimizer`, even though
 `search-ranking-optimizer`'s own `composer.json` already declares a repository for it — Composer
 only reads `repositories` from the *root* project, never from a dependency's own `composer.json`,
 so every non-Packagist package anywhere in the graph has to be re-declared by whoever sits at the
-root. (This mirrors what this project's own demoshop does — see its `composer.json`.)
+root. search-debug and search-feedback need no entry: Composer resolves them from Packagist. (This
+mirrors what this project's own demoshop does — see its `composer.json`.)
 
 ```json
 {
     "repositories": [
-        { "type": "vcs", "url": "https://github.com/andrebarthelmeshellmuth/spryker-search-debug" },
         { "type": "vcs", "url": "https://github.com/andrebarthelmeshellmuth/spryker-search-ranking" },
         { "type": "vcs", "url": "https://github.com/andrebarthelmeshellmuth/spryker-search-ranking-optimizer" },
-        { "type": "vcs", "url": "https://github.com/andrebarthelmeshellmuth/spryker-search-feedback" },
         { "type": "vcs", "url": "https://github.com/andrebarthelmeshellmuth/spryker-search-variant-facets" },
         { "type": "vcs", "url": "https://github.com/andrebarthelmeshellmuth/spryker-search-index-alias" },
         { "type": "vcs", "url": "https://github.com/andrebarthelmeshellmuth/spryker-search-analyzer-config" },
